@@ -1,6 +1,10 @@
 # BeeperLite
 
+> [!WARNING]
+> **Project Discontinued**: Development of BeeperLite has been halted. Implementing end-to-end decryption (E2EE) requires modern libraries (such as the Matrix Rust SDK) which are incompatible with iOS 15.1. 
+
 A lightweight, native iOS client for Beeper/Matrix, designed for iOS 15.1+ compatibility.
+
 
 BeeperLite connects directly to the Beeper Matrix homeserver to fetch, view, and send messages in real-time, with local caching powered by Core Data.
 
