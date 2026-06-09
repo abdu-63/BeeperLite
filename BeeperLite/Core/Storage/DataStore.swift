@@ -36,4 +36,21 @@ final class DataStore {
             }
         }
     }
+    
+    func clearAllData() {
+        let entities = container.managedObjectModel.entities
+        for entity in entities {
+            if let entityName = entity.name {
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+                let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+                do {
+                    try context.execute(deleteRequest)
+                    print("Données effacées pour l'entité \(entityName)")
+                } catch {
+                    print("Erreur lors de l'effacement de l'entité \(entityName): \(error)")
+                }
+            }
+        }
+        saveContext()
+    }
 }

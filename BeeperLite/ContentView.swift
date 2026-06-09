@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("loggedInUsername") private var loggedInUsername: String = ""
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        if loggedInUsername.isEmpty {
+            LoginView()
+        } else {
+            NavigationView {
+                ChatListView(username: loggedInUsername)
+                    .environment(\.managedObjectContext, DataStore.shared.context)
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
-        .padding()
     }
 }
 
